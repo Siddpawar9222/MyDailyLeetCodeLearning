@@ -1,0 +1,39 @@
+## 🔗 [560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/description/) 
+
+## Explanation(Dry Run)
+
+<p align="middle">
+   <img src="../Images/560.jpg" width="400"/>
+</p>
+
+## Formula
+ visitedSum + k = totalSum
+ </hr> 
+ visitedSum = totalSum-k
+
+## Code
+```java
+class Solution {
+    public int subarraySum(int[] nums, int k) {
+     Map<Integer,Integer> map = new HashMap<>();
+     int prefixSum=0 ;
+     int ans =0 ;
+     map.put(0,1);
+     for(int i=0;i<nums.length;i++){
+         prefixSum += nums[i];
+         int visitedSum = prefixSum-k ;
+         if(map.containsKey(visitedSum)){
+              ans += map.get(visitedSum);
+         }
+         map.put(prefixSum,map.getOrDefault(prefixSum,0)+1);
+     }
+
+     return ans ;
+
+    }
+}
+```
+
+
+
+                                                     
