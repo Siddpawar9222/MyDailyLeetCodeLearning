@@ -8,7 +8,10 @@
 
 ## Dry Run
 
-![Dry Run](../../Array/MultiD/1380.jpg)
+<p align="middle">
+   <img src="../../Array/MultiD/1380.jpg" width="400"/>
+</p>
+
 
 ---
 
