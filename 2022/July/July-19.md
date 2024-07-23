@@ -9,7 +9,7 @@
 ## Dry Run
 
 <p align="middle">
-   <img src="../../Array/MultiD/1380.jpg" width="400" style="transition: transform 0.2s;" />
+   <img src="../../Array/MultiD/1380.jpg" width="400"/>
 </p>
 
 
