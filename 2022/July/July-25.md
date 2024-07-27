@@ -11,7 +11,7 @@
 ## Dry Run
 
 <p align="middle">
-   <img src="../../Sorting/2418.jpg" width="400"/>
+   <img src="../../Sorting/mergeSort.jpg" width="400"/>
 </p>
 
 ---
