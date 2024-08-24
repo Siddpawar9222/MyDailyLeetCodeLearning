@@ -1,12 +1,10 @@
-<!-- August-12-->
+<!-- August-17-->
 
-# LeetCode - [703. Kth Largest Element in a Stream](https://leetcode.com/problems/kth-largest-element-in-a-stream/description/)
+# LeetCode - [1937. Maximum Number of Points with Cost](https://leetcode.com/problems/maximum-number-of-points-with-cost/description/)
 
-**Difficulty:** Easy
+**Difficulty:** Medium
 
-**Category:**  PriorityQueue
-
-**Hint:** Same as Leetcode 215, 28 day of 75dayschallenge
+**Category:**  DP
 
 ---
 

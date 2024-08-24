@@ -1,12 +1,11 @@
-<!-- August-12-->
+<!-- August-16-->
 
-# LeetCode - [703. Kth Largest Element in a Stream](https://leetcode.com/problems/kth-largest-element-in-a-stream/description/)
+# LeetCode - [624. Maximum Distance in Arrays](https://leetcode.com/problems/maximum-distance-in-arrays/description/)
 
-**Difficulty:** Easy
+**Difficulty:**Medium
 
-**Category:**  PriorityQueue
+**Category:**  Array
 
-**Hint:** Same as Leetcode 215, 28 day of 75dayschallenge
 
 ---
 
