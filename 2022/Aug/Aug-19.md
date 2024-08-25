@@ -11,7 +11,7 @@
 ## Dry Run
 
 <p align="middle">
-   <img src="../../Heap/703.jpg" width="400"/>
+   <img src="../../DP/650.jpg" width="400"/>
 </p>
 
 ---

@@ -1,46 +1,39 @@
-<!-- August-19-->
+<!-- August-25 -->
 
-# LeetCode - [650. 2 Keys Keyboard](https://leetcode.com/problems/2-keys-keyboard/description/)
+# LeetCode - [145. Binary Tree Postorder Traversal](https://leetcode.com/problems/binary-tree-postorder-traversal/description/)
 
-**Difficulty:** Medium
+**Difficulty:** Easy
 
-**Category:**  DP
+**Category:**  Binary Tree
 
 ---
+Note : 
 
-## Dry Run
+PreOrder : root, left, right
 
-<p align="middle">
-   <img src="../../Heap/703.jpg" width="400"/>
-</p>
+InOrder : left, root, right
+
+PostOrder : left, right, root
 
 ---
 
 ## Solution
 
 ```java
-//Using Recursion
 class Solution {
-    private int solve(int n ,int currA, int clipB){
-        if(currA==n){
-            return 0 ;
+    private void solve(TreeNode root, List<Integer> ans) {
+        if (root == null) {
+            return;
         }
-
-        if(currA>n){
-            return 1001;
-        }
-
-        int copyAndPaste = 1 + 1 + solve(n, currA + currA,currA);
-        int paste = 1 + solve(n, currA+clipB,clipB);
-
-        return Math.min(copyAndPaste,paste);
+        solve(root.left, ans);
+        solve(root.right, ans);
+        ans.add(root.val);
     }
-    public int minSteps(int n) {
-        if(n==1){
-            return 0 ;
-        }
-        int result = 1 + solve(n,1,1);
-        return result;
+
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> ans = new ArrayList<>();
+        this.solve(root, ans);
+        return ans;
     }
 }
 ```

@@ -1,17 +1,17 @@
-<!-- August-19-->
+<!-- August-22-->
 
-# LeetCode - [650. 2 Keys Keyboard](https://leetcode.com/problems/2-keys-keyboard/description/)
+# LeetCode - [476. Number Complement](https://leetcode.com/problems/number-complement/description/)
 
-**Difficulty:** Medium
+**Difficulty:** Easy
 
-**Category:**  DP
+**Category:**  String
 
 ---
 
 ## Dry Run
 
 <p align="middle">
-   <img src="../../Heap/703.jpg" width="400"/>
+   <img src="../../String/476.jpg" width="400"/>
 </p>
 
 ---

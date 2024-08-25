@@ -1,17 +1,17 @@
-<!-- August-19-->
+<!-- August-23-->
 
-# LeetCode - [650. 2 Keys Keyboard](https://leetcode.com/problems/2-keys-keyboard/description/)
+# LeetCode - [592. Fraction Addition and Subtraction](https://leetcode.com/problems/fraction-addition-and-subtraction/description/)
 
 **Difficulty:** Medium
 
-**Category:**  DP
+**Category:**  String, Simulation
 
 ---
 
 ## Dry Run
 
 <p align="middle">
-   <img src="../../Heap/703.jpg" width="400"/>
+   <img src="../../String/592.jpg" width="400"/>
 </p>
 
 ---
