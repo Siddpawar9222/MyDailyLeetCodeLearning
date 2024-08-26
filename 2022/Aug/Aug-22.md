@@ -19,28 +19,41 @@
 ## Solution
 
 ```java
-//Using Recursion
 class Solution {
-    private int solve(int n ,int currA, int clipB){
-        if(currA==n){
-            return 0 ;
+    private String numberToString(int num) {
+        StringBuilder sb = new StringBuilder("");
+        int temp = num;
+
+        while (temp > 0) {
+            int rem = temp % 2;
+            sb.insert(0, rem);
+            temp /= 2;
         }
 
-        if(currA>n){
-            return 1001;
+        while (sb.length() > 0 && sb.charAt(0) != '1') {
+            sb.deleteCharAt(0);
         }
 
-        int copyAndPaste = 1 + 1 + solve(n, currA + currA,currA);
-        int paste = 1 + solve(n, currA+clipB,clipB);
-
-        return Math.min(copyAndPaste,paste);
+        return sb.toString();
     }
-    public int minSteps(int n) {
-        if(n==1){
-            return 0 ;
+
+    public int findComplement(int num) {
+        String binaryNum = this.numberToString(num);
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < binaryNum.length(); i++) {
+            sb.append(binaryNum.charAt(i) == '1' ? '0' : '1');
         }
-        int result = 1 + solve(n,1,1);
-        return result;
+
+        int ans = 0;
+        int idx = 0;
+
+        for (int i = sb.length() - 1; i >= 0; i--) {
+            ans += (sb.charAt(i) - '0') * (int) Math.pow(2, idx);
+            idx++;
+        }
+
+        return ans;
     }
 }
 ```

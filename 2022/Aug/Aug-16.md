@@ -12,7 +12,7 @@
 ## Dry Run
 
 <p align="middle">
-   <img src="../../Heap/703.jpg" width="400"/>
+   <img src="../../Array/624.jpg" width="400"/>
 </p>
 
 ---
@@ -20,31 +20,23 @@
 ## Solution
 
 ```java
+class Solution {
+    public int maxDistance(List<List<Integer>> arrays) {
+        int diff = Integer.MIN_VALUE;
+        int MIN = arrays.get(0).get(0);
+        int MAX = arrays.get(0).get(arrays.get(0).size()-1);
 
-class KthLargest {
-    private final int k;
-    private final Queue<Integer> queue;   //min-heap
+        for(int i=1 ;i<arrays.size();i++){
+            List<Integer> list = arrays.get(i);
 
-    public KthLargest(int k, int[] nums) {
-        this.k = k;
-        this.queue = new PriorityQueue<>();
-        for (int num : nums) {
-            add(num);
+            diff = Math.max(diff, Math.abs(list.get(0) - MAX));
+            diff = Math.max(diff, Math.abs(list.get(list.size()-1) - MIN));
+
+            MIN = Math.min(list.get(0),MIN);
+            MAX = Math.max(list.get(list.size()-1),MAX);
         }
-    }
 
-    public int add(int val) {
-        queue.offer(val);
-        if (queue.size() > k) {
-            queue.poll();
-        }
-        return queue.peek();
+        return diff ;
     }
 }
-
-/**
- * Your KthLargest object will be instantiated and called as such:
- * KthLargest obj = new KthLargest(k, nums);
- * int param_1 = obj.add(val);
- */
 ```
