@@ -11,7 +11,7 @@
 ## Dry Run
 
 <p align="middle">
-   <img src="../../Graph/dijkstraAlgorithm.jpg" width="400"/>
+   <img src="../../DFS_BFS/947.webp" width="400"/>
 </p>
 
 ---
