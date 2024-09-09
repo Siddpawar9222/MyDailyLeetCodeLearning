@@ -1,106 +1,67 @@
-<!-- July 31 -->
+<!-- setp-1 -->
 
-# LeetCode - [1105. Filling Bookcase Shelves](https://leetcode.com/problems/filling-bookcase-shelves/description/?envType=daily-question&envId=2024-07-31)
+# LeetCode - [2022. Convert 1D Array Into 2D Array](https://leetcode.com/problems/convert-1d-array-into-2d-array/description/)
 
-**Difficulty:** Medium
+**Difficulty:** Easy
 
-**Category:** Arrays, DP
+**Category:** Arrays, 2D Arrays
 
 ---
 
-## Dry Run
-
-<p align="middle">
-   <img src="../../DP/1105.jpg" width="400"/>
- <img src="../../DP/1105_1.jpg" width="400"/>
-</p>
 
 ---
 
 ## Solution
 
 ```java
-// Approach 1 : Using Recursion(TLE)
+// Brute Force
+
 // class Solution {
-//     private int originalWidth;
-//     private int originalHeight;
-
-//     private int solve(int[][] books, int width, int height, int idx) {
-//         int n = books.length;
-
-//         if (idx == n) {
-//             return height;
+//     public int[][] construct2DArray(int[] original, int m, int n) {
+//         int size = original.length;
+//         if (size > m * n || m * n > size) {
+//             return new int[][] {};
 //         }
+//         int[][] ans = new int[m][n];
 
-//         int take = Integer.MAX_VALUE;
-//         int next = Integer.MAX_VALUE;
-
-//         int currWidth = books[idx][0];
-//         int currHeigth = books[idx][1];
-
-//         if (currWidth <= width) {
-//             take = solve(books, width - currWidth, Math.max(currHeigth, height), idx + 1);
+//         int r = 0;
+//         int c = 0;
+//         int idx = 0;
+//         while (r < m) {
+//             ans[r][c] = original[idx];
+//             idx++;
+//             c++;
+//             if (c == n) {
+//                 c = 0;
+//                 r++;
+//             }
 //         }
-
-//         if (height != 0) {
-//             next = height + solve(books, originalWidth, originalHeight, idx);
-//         }
-
-//         return Math.min(take, next);
-//     }
-
-//     public int minHeightShelves(int[][] books, int shelfWidth) {
-//         originalWidth = shelfWidth;
-//         originalHeight = 0;
-//         return solve(books, originalWidth, originalHeight, 0);
+//         return ans;
 //     }
 // }
 
-// Approach 1 : Using Memo
+
+//Arranged program
 class Solution {
-    private int originalWidth;
-    private int originalHeight;
+    public int[][] construct2DArray(int[] original, int m, int n) {
+        int size = original.length;
 
-    private int solve(int[][] books, Map<String, Integer> memo, int width, int height, int idx) {
-        int n = books.length;
-
-        if (idx == n) {
-            return height;
+        // Check if it's possible m*n>size or size>m*n
+        if (size != m * n) {
+            return new int[][] {};
         }
 
-        String key = width + " " + height + " " + idx;
+        int[][] ans = new int[m][n];
+        int idx = 0;
 
-        if (memo.containsKey(key)) {
-            return memo.get(key);
+        // Fill the 2D array row by row
+        for (int r = 0; r < m; r++) {
+            for (int c = 0; c < n; c++) {
+                ans[r][c] = original[idx++];
+            }
         }
 
-        int take = Integer.MAX_VALUE;
-        int next = Integer.MAX_VALUE;
-
-        int currWidth = books[idx][0];
-        int currHeigth = books[idx][1];
-
-        if (currWidth <= width) {
-            take = solve(books, memo, width - currWidth, Math.max(currHeigth, height), idx + 1);
-        }
-
-        if (height != 0) {
-            next = height + solve(books, memo, originalWidth, originalHeight, idx);
-        }
-
-        memo.put(key, Math.min(take, next));
-
-        return memo.get(key);
-    }
-
-    public int minHeightShelves(int[][] books, int shelfWidth) {
-        int n = books.length;
-        originalWidth = shelfWidth;
-        originalHeight = 0;
-
-        Map<String, Integer> memo = new HashMap<>();
-
-        return solve(books, memo, originalWidth, originalHeight, 0);
+        return ans;
     }
 }
 ```

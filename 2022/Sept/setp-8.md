@@ -8,15 +8,6 @@
 
 ---
 
-## Dry Run
-
-<p align="middle">
-   <img src="../../DP/1105.jpg" width="400"/>
- <img src="../../DP/1105_1.jpg" width="400"/>
-</p>
-
----
-
 ## Solution
 
 ```java

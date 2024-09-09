@@ -1,106 +1,50 @@
-<!-- July 31 -->
+<!-- setp-7 -->
 
-# LeetCode - [1105. Filling Bookcase Shelves](https://leetcode.com/problems/filling-bookcase-shelves/description/?envType=daily-question&envId=2024-07-31)
+# LeetCode - [1367. Linked List in Binary Tree](https://leetcode.com/problems/linked-list-in-binary-tree/description/)
 
 **Difficulty:** Medium
 
-**Category:** Arrays, DP
+**Category:** Linked List, Binary Tree
 
----
-
-## Dry Run
-
-<p align="middle">
-   <img src="../../DP/1105.jpg" width="400"/>
- <img src="../../DP/1105_1.jpg" width="400"/>
-</p>
 
 ---
 
 ## Solution
 
 ```java
-// Approach 1 : Using Recursion(TLE)
-// class Solution {
-//     private int originalWidth;
-//     private int originalHeight;
-
-//     private int solve(int[][] books, int width, int height, int idx) {
-//         int n = books.length;
-
-//         if (idx == n) {
-//             return height;
-//         }
-
-//         int take = Integer.MAX_VALUE;
-//         int next = Integer.MAX_VALUE;
-
-//         int currWidth = books[idx][0];
-//         int currHeigth = books[idx][1];
-
-//         if (currWidth <= width) {
-//             take = solve(books, width - currWidth, Math.max(currHeigth, height), idx + 1);
-//         }
-
-//         if (height != 0) {
-//             next = height + solve(books, originalWidth, originalHeight, idx);
-//         }
-
-//         return Math.min(take, next);
-//     }
-
-//     public int minHeightShelves(int[][] books, int shelfWidth) {
-//         originalWidth = shelfWidth;
-//         originalHeight = 0;
-//         return solve(books, originalWidth, originalHeight, 0);
-//     }
-// }
-
-// Approach 1 : Using Memo
 class Solution {
-    private int originalWidth;
-    private int originalHeight;
-
-    private int solve(int[][] books, Map<String, Integer> memo, int width, int height, int idx) {
-        int n = books.length;
-
-        if (idx == n) {
-            return height;
+    private boolean solve(List<Integer> list, TreeNode root, int idx) {
+        if (idx == list.size()) {  // If the entire list is matched
+            return true;
         }
-
-        String key = width + " " + height + " " + idx;
-
-        if (memo.containsKey(key)) {
-            return memo.get(key);
+        if (root == null) {  // If the tree path ends without matching the list
+            return false;
         }
-
-        int take = Integer.MAX_VALUE;
-        int next = Integer.MAX_VALUE;
-
-        int currWidth = books[idx][0];
-        int currHeigth = books[idx][1];
-
-        if (currWidth <= width) {
-            take = solve(books, memo, width - currWidth, Math.max(currHeigth, height), idx + 1);
+        if (root.val == list.get(idx)) {  // If the current node matches the list element
+            // Try to match the rest of the list down the left or right subtree
+            return solve(list, root.left, idx + 1) || solve(list, root.right, idx + 1);
         }
-
-        if (height != 0) {
-            next = height + solve(books, memo, originalWidth, originalHeight, idx);
-        }
-
-        memo.put(key, Math.min(take, next));
-
-        return memo.get(key);
+        // If the current node doesn't match, return false without restarting
+        return false;
     }
 
-    public int minHeightShelves(int[][] books, int shelfWidth) {
-        int n = books.length;
-        originalWidth = shelfWidth;
-        originalHeight = 0;
-
-        Map<String, Integer> memo = new HashMap<>();
-
-        return solve(books, memo, originalWidth, originalHeight, 0);
+    public boolean isSubPath(ListNode head, TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        ListNode curr = head;
+        while (curr != null) {
+            list.add(curr.val);
+            curr = curr.next;
+        }
+        return checkPath(list, root);
+    }
+    
+    private boolean checkPath(List<Integer> list, TreeNode root) {
+        if (root == null) {
+            return false;
+        }
+        // Check if we can start matching the list from the current node,
+        // or try matching from the left and right children.
+        return solve(list, root, 0) || checkPath(list, root.left) || checkPath(list, root.right);
     }
 }
 ```
