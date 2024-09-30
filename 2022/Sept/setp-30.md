@@ -1,76 +1,45 @@
 <!-- Setp 30 -->
 
-# LeetCode - [440. K-th Smallest in Lexicographical Order](https://leetcode.com/problems/k-th-smallest-in-lexicographical-order/)
+# LeetCode - [1381. Design a Stack With Increment Operation](https://leetcode.com/problems/design-a-stack-with-increment-operation/description/)
 
 **Difficulty:** Medium
 
-**Category:** Arrays, Comparators
+**Category:** Stack, Arrays
 
 ---
 
 ## Solution
 
 ```java
-//Gave TLE
-// class Solution {
-//     public int findKthNumber(int n, int k) {
-//         String[] temp = new String[n + 1];
-//         temp[0] = "0";
-//         for (int i = 1; i <= n; i++) {
-//             temp[i] = String.valueOf(i);
-//         }
+class CustomStack {
+    int[] stack;
+    int idx = -1;
 
-//         Arrays.sort(temp, (a, b) -> {
-//             if (a.compareTo(b) > 0) {
-//                 return 1;
-//             } else if (a.compareTo(b) < 0) {
-//                 return -1;
-//             } else {
-//                 return 0;
-//             }
-//         });
-
-//         int ans = -1;
-
-//         for (int i = 0; i <= k; i++) {
-//             ans = Integer.parseInt(temp[i]);
-//         }
-
-//         return ans;
-//     }
-// }
-
-//More Optimised 
-// Learn this solution later
-class Solution {
-    public int findKthNumber(int n, int k) {
-        int current = 1;
-        k--;
-
-        while (k > 0) {
-            int count = countPrefix(current, n);
-            if (count <= k) {
-                current++;
-                k -= count;
-            } else {
-                current *= 10;
-                k--;
-            }
-        }
-        return current;
+    public CustomStack(int maxSize) {
+        stack = new int[maxSize];
     }
 
-    private int countPrefix(int prefix, int n) {
-        long curr = prefix;
-        long next = prefix + 1;
-        int count = 0;
-
-        while (curr <= n) {
-            count += Math.min(n + 1, next) - curr;
-            curr *= 10;
-            next *= 10;
+    public void push(int x) {
+        if (idx < stack.length - 1) {
+            stack[idx + 1] = x;
+            idx++;
         }
-        return count;
+    }
+
+    public int pop() {
+        if (idx != -1) {
+            int topElement = stack[idx];
+            stack[idx] = 0;
+            idx--;
+            return topElement;
+        }
+        return -1;
+    }
+
+    public void increment(int k, int val) {
+        for (int i = 0; i < k && i < idx + 1; i++) {
+            stack[i] = stack[i] + val;
+        }
     }
 }
 ```
